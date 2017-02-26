@@ -33,19 +33,7 @@ button img {
   vertical-align: middle;
 }
 
-progress[value]{
-  background-color: white;
-  border: none;
-  cursor:pointer;
 
-  /* clear the default appearance */
--webkit-appearance: none;
-  -moz-appearance: none;
-
-
-/* delete border in Firefox. */
-border: none;
-}
 
 video {
 	max-width: 100%;
@@ -102,21 +90,7 @@ video {
 	opacity: .9;
   }
 
-/* this is intended to make seek bar visible even when not hovering...not working */
-#video-container #seek-bar {
-  opacity:.9;
-  -webkit-transition: opacity .3s;
-  -moz-transition: opacity .3s;
-  -o-transition: opacity .3s;
-  -ms-transition: opacity .3s;
-  transition: opacity .3s;
-  max-width: 100%;
-  height:.5em;
-  position: absolute;
-	display:block;
-	width:100%;
-	bottom: 0px;
-  }
+
 
 #volume-bar {
   	width: 100px;
