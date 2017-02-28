@@ -33,8 +33,8 @@ window.onload = function() {
 
 
 // Skip video to the time specified in span ID
-  function play_to_text(e) {
-  	video.currentTime = e.target.id;
+  function play_to_text(event) {
+  	video.currentTime = event.target.id;
   	video.play();
   }
 
