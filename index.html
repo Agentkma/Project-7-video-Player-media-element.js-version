@@ -3,62 +3,69 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project 7 Video Player</title>
+    <title>Project 7 Video Player MediaElement.JS</title>
     <link href="https://fonts.googleapis.com/css?family=Arsenal" rel="stylesheet" type='text/css'>
     <link rel="stylesheet" href="css/normalize.css">
-    <script   src="https://code.jquery.com/jquery-3.1.1.min.js"   integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="   crossorigin="anonymous"></script>
-    <!-- <script src="script.js"></script>-->
-    <script src="https://cdn.jsdelivr.net/mediaelement/3.1.2/mediaelement-and-player.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/mediaelement/3.1.2/mediaelementplayer.min.css" rel="stylesheet">
+    <script src="mediaelement-master/build/jquery.js"></script>
+    <script src="script.js"></script>
+    <script src="mediaelement-master/build/mediaelement-and-player.js"></script>
+    <link href="mediaelement-master/build/mediaelementplayer.css" rel="stylesheet">
     <link rel="stylesheet" href="css/main.css">
-
-
-
   </head>
+
   <body>
 
+      <div id="video-container">
+          <!-- Video -->
+          <video controls id="player1" preload="auto" class="mejs-player-custom" >
+            <source src="video/video.mp4" type="video/mp4" >
+            <source src="video/video.ogg" type="video/ogg" >
+            <track  default id="track" src="video/captions.vtt" kind="captions" srclang="en" label="English">
+          </video>
+      </div>
 
-    <div id="video-container">
-        <!-- Video -->
-        <video controls id="video" preload="auto" class="mejs-player" data-mejsoptions='{"pluginPath": "/path/to/shims/", "alwaysShowControls": "true"}'>
-          <source src="video/video.mp4" type="video/mp4" >
-          <source src="video/video.ogg" type="video/ogg" >
-          <track  default id="track" src="video/captions.vtt" kind="captions" srclang="en" label="English">
-        </video>
+      <div class="transcript-wrapper" id="transcript">
+        <!-- CAPTIONS/TRANSCRIPT/TEXT  -->
+        <p id="0.01" >Now that we've looked at the architecture
+        of the internet, let's see how you might connect your personal devices to
+        the internet inside your house.</p>
+
+        <p id="7.535"> Well there are many ways to
+        connect to the internet, and most often people connect wirelessly.</p>
+
+        <p id="13.96"> Let's look at an example of how
+        you can connect to the internet.</p> <br><br>
+
+        <p id="17.94"> If you live in a city or a town,
+        you probably have a coaxial cable for cable Internet, or a phone line if you
+        have DSL, running to the outside of your house, that connects you to
+        the Internet Service Provider, or ISP.</p>
+
+        <p id="30.92" > If you live far out in the country,
+        you'll more likely have a dish outside your house, connecting
+        you wirelessly to your closest ISP, or you might also use the telephone system.</p><br><br>
+
+        <p id="41.20" >Whether a wire comes straight from
+        the ISP hookup outside your house, or it travels over radio
+        waves from your roof,the first stop a wire will make once
+        inside your house, is at your modem. </p>
+
+        <p id="53.76" > A modem is what connects the internet
+        to your network at home. A few common residential modems are DSL or </p>
+
+      </div>
 
 
-  </div>
+      <script>
+          $(document).ready(function() {
 
-  <div class="transcript-wrapper" id="transcript">
-<!-- CAPTIONS/TRANSCRIPT/TEXT  -->
-
-  </div>
-
-
-  <script>
-
-      $('#mediaplayer').mediaelementplayer({
-          pluginPath: "/path/to/shims/",
-          success: function(mediaElement, originalNode) {
-              // do things
-              features:[playpause, current, progress, fullscreen, tracks, jumpforward, skipback, loop, markers, postroll, sourcechooser, speed, stop, time, volume]  ,
-              
-
-          }
-      });
-
-      // To access player after its creation through jQuery use:
-      var playerId = $('#mediaplayer').closest('.mejs__container').attr('id');
-      // or $('#mediaplayer').closest('.mejs-container').attr('id') in "legacy" stylesheet
-
-      var player = mejs.players[playerId];
-
-      // With iOS (iPhone), since it defaults always to QuickTime, you access the player directly;
-      // i.e., if you wanna exit fullscreen on iPhone using the player, use this:
-      var player = $('#mediaplayer')[0];
-      player.webkitExitFullScreen();
-
-  </script>
+              // create player
+              $('#player1').mediaelementplayer({
+                  // add desired features in order
+                  features: ['playpause','[feature_name]','current','progress','duration','volume','fullscreen']
+              });
+          });
+      </script>
 
   </body>
 </html>
